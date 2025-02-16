@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横須賀市安浦町の休める場所</title>
+    
+    <!-- Leaflet.jsのスタイルシート -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+    <!-- 地図のスタイル -->
+    <style>
+        #map {
+            height: 500px; /* 地図の高さ */
+            width: 100%;  /* 地図の幅 */
+        }
+    </style>
+</head>
+<body>
+    <h3>横須賀市安浦町の飲食店一覧</h3>
+    
+    <!-- 地図を表示するためのdiv要素 -->
+    <div id="map"></div>
+
+    <!-- Leaflet.jsのJavaScriptライブラリ -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        // 1. 地図の初期化
+        var map = L.map('map').setView([35.27247468300064, 139.6765911650999], 15); // 横須賀市安浦町の緯度・経度
+
+        // 2. OpenStreetMap タイルを地図に追加
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 3. 休める場所のマーカーを設定
+        var places = [
+            // { lat: 35.2825, lng: 139.662, name: "飲食店 A" },
+            // { lat: 35.2830, lng: 139.663, name: "ベンチ B" },
+            // { lat: 35.2824221, lng: 139.6617116,name:"サイゼリヤ"},
+            // { lat: 35.2804904, lng: 139.6698185,name:"名前なし"},
+            // { lat: 35.2813032, lng: 139.6661984,name:"よこすか海軍カレー館"},
+            // { lat: 35.2812929, lng: 139.6635251,name:"名前なし"},
+            // { lat: 35.281583, lng: 139.6694301,name:"サイゼリヤ"},
+            // { lat: 35.2815807, lng: 139.669815,name:"ステーショングリル"},
+            // { lat: 35.2810969, lng: 139.6697694,name:"ペッパーランチ"},
+            // { lat: 35.2807342, lng: 139.6654515,name:"名前なし"},
+            // { lat: 35.2817865, lng: 139.6693997,name:"名前なし"},
+            // { lat: 35.2831855, lng: 139.6687523,name:"ゴルカパレス"},
+            // { lat: 35.2815839, lng: 139.6609368, name:"ガスト"},
+            // { lat: 35.28333309787362, lng: 139.66245166752293, name:"タリーズコーヒー"},
+            { lat: 35.27249, lng: 139.67620, name: "自家製細麺上海亭"},
+            { lat: 35.27256, lng: 139.67640,name: "ツクイクレープ"},
+            { lat: 35.27237, lng: 139.67763,name: "モスバーガー"},
+            { lat: 35.27132, lng: 139.67800,name: "ラーメンごち豚" },
+            { lat: 35.27177, lng:139.67788,name: "HIDEOUT"},
+            { lat: 35.27210, lng:139.67711,name:"華代(韓国料理)"},
+            { lat: 35.27123, lng:139.67866,name:"温(もつ鍋)"},
+            { lat: 35.27014, lng:139.67965,name:"すき家"},
+            { lat: 35.26939, lng:139.68035,name:"セブンイレブン"},
+            { lat: 35.27240308390701, lng:139.67762713009455,name:"末広（中華調理）"},
+            { lat: 35.270531846479166, lng:139.6777560154498,name:"SUEHIRO（中華料理）"} ,
+            { lat: 35.27065, lng:139.67718,name:"そば処玉川"},
+            { lat: 35.27083, lng:139.67732,name:"チーズモックすえひろ"},
+            { lat: 35.27080, lng:139.67715,name:"味噌ラーメン食食"},
+            { lat: 35.27291, lng:139.67658,name:"toirowa"},
+            { lat: 35.27034, lng:139.67779,name:"釜山館※17時から営業"},
+            { lat: 35.27127, lng:139.67777,name:"デリシャスダイニング（インド料理）"},
+            { lat: 35.26985, lng:139.67988,name:"LOOK UP(喫茶店)"},
+            { lat: 35.272206, lng:139.67937,name:"横須賀みんなのカレー食堂(ことも食堂・地域食堂)"},
+            { lat: 35.27167, lng:139.67953,name:"ルメルシェ(ベーカリー)"},
+            { lat: 35.27126, lng:13967750,name:"栄龍（中華料理））"},
+        
+            // 他の場所を追加することができます
+        ];
+
+        // 4. 各場所にマーカーを追加
+        places.forEach(function(place) {
+            L.marker([place.lat, place.lng])
+                .addTo(map)
+                .bindPopup('<b>' + place.name + '</b>'); // クリックで場所名を表示
+        });
+    </script>
+</body>
+</html>
